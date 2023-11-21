@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IPokemonDetailData } from "../../../interfaces/PokemonDetailData";
 
 const pokemonApi = createApi({
   // URL https://pokeapi.co/api/v2/pokemon?limit=9 construída a partir de baseQuery e da prop 'pokemonList' 
@@ -14,7 +15,7 @@ const pokemonApi = createApi({
         };
       },
     }),
-    pokemonDetail: build.query({
+    pokemonDetail: build.query<IPokemonDetailData, {name: string}>({
       query: ({ name }) => `pokemon/${name}/`
     })
   }),

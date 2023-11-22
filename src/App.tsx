@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import PokemonList from "./components/PokemonList";
 
 function App() {
   const [selectedPokemon, selectPokemon] = useState<string | undefined>(
     undefined
   );
-return (
+  return (
     <>
       <header>
         <h1>My Pokedex</h1>
@@ -17,12 +18,11 @@ return (
             <button onClick={() => selectPokemon(undefined)}>back</button>
           </>
         ) : (
-          // <PokemonList onPokemonSelected={selectPokemon} />
-          null
+          <PokemonList onPokemonSelected={selectPokemon} />
         )}
       </main>
     </>
   );
 }
 
-export default App
+export default App;

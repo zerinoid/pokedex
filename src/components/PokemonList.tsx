@@ -14,6 +14,7 @@ const PokemonList = ({
   if (isError) {
     return <p>something went wrong</p>;
   }
+
   return (
     <article>
       <h2>Overview</h2>

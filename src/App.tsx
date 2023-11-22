@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>My Pokedex</h1>
+        <h1>Pokedex App</h1>
       </header>
       <main>
         {selectedPokemon ? (

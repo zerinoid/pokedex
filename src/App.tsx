@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import PokemonList from "./components/PokemonList";
+import PokemonDetails from "./components/PokemonDetails";
 
 function App() {
   const [selectedPokemon, selectPokemon] = useState<string | undefined>(
@@ -14,7 +15,7 @@ function App() {
       <main>
         {selectedPokemon ? (
           <>
-            {/* <PokemonDetails pokemonName={selectedPokemon} /> */}
+            <PokemonDetails pokemonName={selectedPokemon} />
             <button onClick={() => selectPokemon(undefined)}>back</button>
           </>
         ) : (

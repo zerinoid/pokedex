@@ -34,7 +34,7 @@ const PokemonList = ({
   return (
     <article>
       <h2>Overview</h2>
-      <ol start={1}>
+      <ol start={1} className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {data.results.map((pokemon) => (
           <li key={pokemon.name}>
             <button onClick={() => onPokemonSelected(pokemon.name)}>

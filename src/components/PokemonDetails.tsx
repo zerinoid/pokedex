@@ -19,11 +19,12 @@ const PokemonDetails = ({ pokemonName }: { pokemonName: string }) => {
   return (
     <article>
       <h2>{data.name}</h2>
-
-      {sprites.map((sprite) => {
-        if (typeof sprite === "string")
-          return <img src={sprite} alt={data.name} />;
-      })}
+      <div className="flex max-w-md flex-wrap justify-center">
+        {sprites.map((sprite) => {
+          if (typeof sprite === "string")
+            return <img src={sprite} alt={data.name} />;
+        })}
+      </div>
       <ul>
         <li>id: {data.id}</li>
         <li>height: {data.height}</li>

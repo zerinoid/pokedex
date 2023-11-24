@@ -8,11 +8,14 @@ const pokemonApi = createApi({
     baseUrl: "https://pokeapi.co/api/v2/",
   }),
   endpoints: (build) => ({
-    pokemonList: build.query<PokemonListing, void>({
-      query() {
+    pokemonList: build.query<
+      PokemonListing,
+      { offset?: number; limit: number }
+    >({
+      query({ offset = 0, limit }) {
         return {
           url: "pokemon",
-          params: { limit: 9 },
+          params: { offset, limit },
         };
       },
     }),

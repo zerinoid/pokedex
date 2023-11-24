@@ -14,10 +14,16 @@ const PokemonDetails = ({ pokemonName }: { pokemonName: string }) => {
     return <p>something went wrong</p>;
   }
 
+  const sprites = Object.values(data.sprites).filter(Boolean);
+
   return (
     <article>
       <h2>{data.name}</h2>
-      <img src={data.sprites.front_default} alt={data.name} />
+
+      {sprites.map((sprite) => {
+        if (typeof sprite === "string")
+          return <img src={sprite} alt={data.name} />;
+      })}
       <ul>
         <li>id: {data.id}</li>
         <li>height: {data.height}</li>

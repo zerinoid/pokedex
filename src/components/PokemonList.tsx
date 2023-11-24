@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { usePokemonListQuery } from "../redux/services/pokemon/pokemonApi";
+import PokemonThumb from "./PokemonThumb";
 
 const PokemonList = ({
   onPokemonSelected,
@@ -37,6 +38,7 @@ const PokemonList = ({
         {data.results.map((pokemon) => (
           <li key={pokemon.name}>
             <button onClick={() => onPokemonSelected(pokemon.name)}>
+              <PokemonThumb pokemonName={pokemon.name} />
               {pokemon.name}
             </button>
           </li>

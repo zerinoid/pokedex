@@ -1,5 +1,5 @@
 import { usePokemonDetailQuery } from "../redux/services/pokemon/pokemonApi";
-import { listFormatter } from "../utils/listFormater";
+import { listFormatter } from "../lib/listFormater";
 
 const PokemonDetails = ({ pokemonName }: { pokemonName: string }) => {
   const { isUninitialized, isLoading, isError, data } = usePokemonDetailQuery({

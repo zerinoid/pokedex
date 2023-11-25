@@ -1,7 +1,6 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import { usePokemonListQuery } from "../redux/services/pokemon/pokemonApi";
-import PokemonThumb from "./PokemonThumb";
-import { Button } from "./ui/button";
+import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({
   onPokemonSelected,
@@ -32,22 +31,16 @@ const PokemonList = ({
     return <p>something went wrong</p>;
   }
 
-  const handleClick = (e: MouseEvent, value: string) => {
-    e.stopPropagation();
-    alert(value);
-  };
-
   return (
     <article>
       <h2>Overview</h2>
       <ol start={1} className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {data.results.map((pokemon) => (
           <li key={pokemon.name}>
-            <button onClick={() => onPokemonSelected(pokemon.name)}>
-              <PokemonThumb pokemonName={pokemon.name} />
-              {pokemon.name}
-              <Button onClick={(e) => handleClick(e, pokemon.name)}>fav</Button>
-            </button>
+            <PokemonCard
+              pokemonName={pokemon.name}
+              onPokemonSelected={onPokemonSelected}
+            />
           </li>
         ))}
       </ol>

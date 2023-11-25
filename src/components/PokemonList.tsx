@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { usePokemonListQuery } from "../redux/services/pokemon/pokemonApi";
 import PokemonThumb from "./PokemonThumb";
+import { Button } from "./ui/button";
 
 const PokemonList = ({
   onPokemonSelected,
@@ -31,6 +32,11 @@ const PokemonList = ({
     return <p>something went wrong</p>;
   }
 
+  const handleClick = (e: MouseEvent, value: string) => {
+    e.stopPropagation();
+    alert(value);
+  };
+
   return (
     <article>
       <h2>Overview</h2>
@@ -40,6 +46,7 @@ const PokemonList = ({
             <button onClick={() => onPokemonSelected(pokemon.name)}>
               <PokemonThumb pokemonName={pokemon.name} />
               {pokemon.name}
+              <Button onClick={(e) => handleClick(e, pokemon.name)}>fav</Button>
             </button>
           </li>
         ))}

@@ -1,6 +1,13 @@
 import { usePokemonDetailQuery } from "../redux/services/pokemon/pokemonApi";
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Bookmark } from "lucide-react";
 import { MouseEvent } from "react";
 
@@ -29,11 +36,21 @@ const PokemonCard = ({ pokemonName, onPokemonSelected }: PokemonCardProps) => {
 
   return (
     <Card onClick={() => onPokemonSelected(pokemonName)}>
-      <img src={data.sprites.front_default} alt={pokemonName} />
-      {pokemonName}
-      <Button onClick={(e) => handleClick(e, pokemonName)}>
-        <Bookmark className="h-5 w-5" />
-      </Button>
+      <CardHeader>
+        <CardTitle>{pokemonName}</CardTitle>
+        <CardDescription>
+          <p>Height: {data.height}</p>
+          <p>Weight: {data.weight}</p>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex justify-center">
+        <img src={data.sprites.front_default} alt={pokemonName} />
+      </CardContent>
+      <CardFooter>
+        <Button onClick={(e) => handleClick(e, pokemonName)}>
+          <Bookmark className="h-5 w-5" />
+        </Button>
+      </CardFooter>
     </Card>
   );
 };
